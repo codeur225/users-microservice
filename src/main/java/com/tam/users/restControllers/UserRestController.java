@@ -30,8 +30,7 @@ public class UserRestController {
 	public User register(@RequestBody RegistrationRequest request) {
 		return userService.registerUser(request);
 		
-	}
-	
+	}	
 	
 	@GetMapping("/verifyEmail/{token}")
 	 public User verifyEmail(@PathVariable("token") String token){

@@ -81,7 +81,7 @@ public class UserServiceImpl  implements UserService{
 		newUser.setUsername(request.getUsername());
 		newUser.setEmail(request.getEmail());
 		
-		newUser.setPassword( bCryptPasswordEncoder.encode( request.getPassword() )  );
+		newUser.setPassword( bCryptPasswordEncoder.encode(request.getPassword()));
 		newUser.setEnabled(false);
 		
 		userRep.save(newUser);
@@ -99,7 +99,6 @@ public class UserServiceImpl  implements UserService{
 		 
 		 //envoyer le code par email à l'utilisateur
 		  sendEmailUser(newUser,token.getToken());
-		
 
 		return userRep.save(newUser);
 	}
@@ -107,9 +106,7 @@ public class UserServiceImpl  implements UserService{
 	private String generateCode() {
 		 Random random = new Random();
 		 Integer code = 100000 + random.nextInt(900000);
-
 		 return code.toString();
-
 	}
 	
 	@Override
@@ -118,7 +115,7 @@ public class UserServiceImpl  implements UserService{
 		 " Votre code de validation est "+"<h1>"+code+"</h1>";
 		 
 		emailSender.sendEmail(u.getEmail(), emailBody);
-		}
+	}
 
 	@Override
 	public User validateToken(String code) {
